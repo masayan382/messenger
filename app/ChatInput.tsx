@@ -1,11 +1,38 @@
 "use client"
 
 import { FormEvent, useState } from "react"
+import { v4 as uuid } from "uuid"
+import { Message } from "../typings"
 
 const ChatInput = () => {
     const [input, setInput] = useState("")
     const addMessage = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        if (!input) return
+        const messageTosend = input
+        setInput("")
+        const id = uuid()
+
+        const message: Message = {
+            id,
+            message: messageTosend,
+            createdAt: Date.now(),
+            username: "test user",
+            porfilePic: "/blue.png",
+            email: process.env.EMAIL!,
+        }
+
+        const uploadMessageToUpstash = async () => {
+            const res = await fetch("/api/addMessage", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ message }),
+            })
+
+            const data = await res.json()
+        }
     }
     return (
         <form
