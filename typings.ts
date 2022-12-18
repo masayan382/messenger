@@ -1,7 +1,7 @@
 export type Message = {
     id: string
     message: string
-    createdAt: number
+    created_at: number
     username: string
     porfilePic: string
     email: string
