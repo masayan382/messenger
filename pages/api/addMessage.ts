@@ -21,6 +21,7 @@ export default async function handler(
         return
     }
     const { message } = req.body
+    console.log("message: ", message)
 
     const newMessage = {
         ...message,
@@ -31,6 +32,6 @@ export default async function handler(
     //push to upstash redis db
     await redis.hset("messages", message.id, JSON.stringify(newMessage))
     serverPusher.trigger("messages", "new-message", newMessage)
-
+    console.log(newMessage)
     res.status(200).json({ message: newMessage })
 }
