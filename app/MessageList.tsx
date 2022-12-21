@@ -19,8 +19,6 @@ const MessageList = () => {
             //if you sent the message, no need to upade cache
             if (messages?.find((message) => message.id === data.id)) return
 
-            console.log("messages: ", messages)
-
             if (!messages) {
                 mutate(fetcher)
             } else {

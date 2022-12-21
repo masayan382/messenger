@@ -8,11 +8,7 @@ import fetcher from "../utils/fetchMessages"
 
 const ChatInput = () => {
     const [input, setInput] = useState("")
-    const {
-        data: messages,
-        error,
-        mutate,
-    } = useSWR("/api/getMessages", fetcher)
+    const {data: messages, error, mutate } = useSWR("/api/getMessages", fetcher)
 
     const addMessage = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
