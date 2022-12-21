@@ -4,12 +4,15 @@ import { FormEvent, useState } from "react"
 import { v4 as uuid } from "uuid"
 import { Message } from "../typings"
 import useSWR from "swr"
-import fetcher from "../utils/fetchMesages"
+import fetcher from "../utils/fetchMessages"
 
 const ChatInput = () => {
     const [input, setInput] = useState("")
-    const { data: messages, error, mutate } = useSWR("api/getMessages", fetcher)
-    // console.log("messages: ", messages)
+    const {
+        data: messages,
+        error,
+        mutate,
+    } = useSWR("/api/getMessages", fetcher)
 
     const addMessage = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -41,7 +44,7 @@ const ChatInput = () => {
         }
         // uploadMessageToUpstash()
         await mutate(uploadMessageToUpstash, {
-            optimaisticData: [message, ...messages!],
+            optimisticData: [message, ...messages!],
             rollbackOnError: true,
         })
     }

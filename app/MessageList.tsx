@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect } from "react"
 import useSWR from "swr"
-import fetcher from "../utils/fetchMesages"
+import fetcher from "../utils/fetchMessages"
 import { Message } from "../typings"
 import MessageComponent from "./MessageComponent"
 import { clientPusher } from "../pusher"
@@ -11,7 +11,7 @@ const MessageList = () => {
         data: messages,
         error,
         mutate,
-    } = useSWR<Message[]>("api/getMessages", fetcher)
+    } = useSWR<Message[]>("/api/getMessages", fetcher)
 
     useEffect(() => {
         const channel = clientPusher.subscribe("messages")

@@ -5,7 +5,7 @@ import redis from "../../redis"
 import { Message } from "../../typings"
 
 type Data = {
-    message: Message
+    message: Message[]
 }
 
 type ErrorData = {
@@ -25,7 +25,7 @@ export default async function handler(
     const newMessage = {
         ...message,
         //Replace the timestamp of the user to the timestamp of the server
-        createdAt: Date.now(),
+        created_at: Date.now(),
     }
 
     //push to upstash redis db
