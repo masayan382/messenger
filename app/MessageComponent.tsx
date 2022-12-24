@@ -11,6 +11,7 @@ type Props = {
 const MessageComponent = ({ message }: Props) => {
     const { data: session } = useSession()
     const isUser = session?.user?.email === message.email
+
     return (
         <div className={`flex w-fit ${isUser && "ml-auto"}`}>
             <div className={`flex-shrink-0 ${isUser && "order-2"}`}>

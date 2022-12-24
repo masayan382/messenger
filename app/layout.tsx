@@ -1,6 +1,5 @@
 import "../styles/globals.css"
 import Header from "./Header"
-import { Providers } from "./providers"
 
 export default async function RootLayout({
     children,

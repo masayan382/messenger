@@ -7,7 +7,6 @@ type Props = {
 }
 
 function SignInComponent({ providers }: Props) {
-    console.log("providers: ", providers)
     return (
         <div className="flex justify-center">
             {Object.values(providers!).map((provider) => (

@@ -5,7 +5,7 @@ import { v4 as uuid } from "uuid"
 import { Message } from "../typings"
 import useSWR from "swr"
 import fetcher from "../utils/fetchMessages"
-import { unstable_getServerSession } from "next-auth"
+import { unstable_getServerSession } from "next-auth/next"
 
 type Props = {
     session: Awaited<ReturnType<typeof unstable_getServerSession>>
