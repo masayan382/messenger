@@ -2,7 +2,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost:3000', 'facebook.com.MetaJapan.photos'],
+    domains: ['localhost:3000', 'facebook.com.MetaJapan.photos', 'platform-lookaside.fbsbx.com'],
   },
   experimental: {
     appDir: true
