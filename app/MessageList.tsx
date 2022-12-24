@@ -19,9 +19,12 @@ const MessageList = ({ initialMessages }: Props) => {
 
     useEffect(() => {
         const channel = clientPusher.subscribe("messages")
+
         channel.bind("new-message", async (data: Message) => {
             //if you sent the message, no need to upade cache
             if (messages?.find((message) => message.id === data.id)) return
+
+            console.log("New Message from pusher:", data.message, "--")
 
             if (!messages) {
                 mutate(fetcher)

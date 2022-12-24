@@ -13,14 +13,16 @@ async function Header() {
                 <div className="flex space-x-2">
                     <Image
                         className="rounded-full mx-2 object-contain"
-                        src="/meta.png"
+                        src={session.user?.image!}
                         height={10}
                         width={50}
                         alt="Profile Picture"
                     />
                     <div>
                         <p className="text-blue-400">Logged in as:</p>
-                        <p className="font-bold text-lg">Test Name</p>
+                        <p className="font-bold text-lg">
+                            {session.user?.name}
+                        </p>
                     </div>
                 </div>
 

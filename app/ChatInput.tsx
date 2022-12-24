@@ -21,7 +21,7 @@ const ChatInput = ({ session }: Props) => {
 
     const addMessage = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (!input) return
+        if (!input || !session) return
 
         const messageTosend = input
         setInput("")
@@ -31,9 +31,9 @@ const ChatInput = ({ session }: Props) => {
             id,
             message: messageTosend,
             created_at: Date.now(),
-            username: "test user",
-            porfilePic: "/blue.png",
-            email: process.env.EMAIL!,
+            username: session?.user?.name!,
+            porfilePic: session?.user?.image!,
+            email: session?.user?.email!,
         }
 
         const uploadMessageToUpstash = async () => {
