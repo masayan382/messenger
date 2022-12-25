@@ -9,7 +9,10 @@ export const serverPusher: Pusher = new Pusher({
     useTLS: true,
 })
 
-export const clientPusher = new ClientPusher(`${process.env.PUSHER_KEY}`, {
-    cluster: `${process.env.NEXT_PUBLIC_PUSHER_CLUSTER}`,
-    forceTLS: true,
-})
+export const clientPusher = new ClientPusher(
+    `${process.env.NEXT_PUBLIC_PUSHER_KEY}}`,
+    {
+        cluster: `${process.env.NEXT_PUBLIC_PUSHER_CLUSTER}`,
+        forceTLS: true,
+    }
+)
