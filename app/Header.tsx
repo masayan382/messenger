@@ -3,10 +3,8 @@ import Link from "next/link"
 import LogoutButton from "./LogoutButton"
 import { unstable_getServerSession } from "next-auth/next"
 
-async function Header() {
-    const session = await unstable_getServerSession()
-
-    if (session)
+function Header({ session }: any) {
+    if (session) {
         return (
             <header className="stickey top-0 z-50 bg-white flex justify-between items-center p-10 shadow-sm">
                 <div className="flex space-x-2">
@@ -28,7 +26,7 @@ async function Header() {
                 <LogoutButton />
             </header>
         )
-
+    }
     return (
         <header className="stickey top-0 z-50 bg-white flex justify-center items-center p-10 shadow-sm">
             <div className="flex flex-col items-center space-y-5">
