@@ -11,7 +11,7 @@ type Props = {
     session: Awaited<ReturnType<typeof unstable_getServerSession>>
 }
 
-const ChatInput = ({ session }: any) => {
+function ChatInput({ session }: any) {
     const [input, setInput] = useState("")
     const {
         data: messages,
